@@ -3,7 +3,7 @@ import requests
 
 def cookies():
     auth = {
-        "login": "790403463460",
+        "login": "nkostin@bytewerk.com",
         "password": "Ytuflzq123",
         "recaptcha": "string"
     }
@@ -21,7 +21,10 @@ def balance(c):
     r = requests.get('https://beta.jetcrypto.com/api/UserAccount', params=params, cookies=c)
     #print(r.json())
     js = r.json()
-    print(js[0]['account']['currency'])
+    print(js)
+    print(js[0]['name'])
+    for i in js:
+        print(i)
 
 
 balance(cookies())
