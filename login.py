@@ -13,18 +13,21 @@ def cookies():
     return r.cookies
 
 
-def balance(c):
+def get_balance(cookies, currency_name):
     params = {
         'page': '1',
         'itemsPerPage': '100'
     }
-    r = requests.get('https://beta.jetcrypto.com/api/UserAccount', params=params, cookies=c)
-    #print(r.json())
+
+    r = requests.get('https://beta.jetcrypto.com/api/UserAccount', params=params, cookies=cookies)
     js = r.json()
     print(js)
-    print(js[0]['name'])
-    for i in js:
-        print(i)
+    # print(js[12]['name'])
+    print(len(js))
+    for i in range(1, len(js)):
+        if currency_name in js[i]['name']:
+            print(js[i]['balance'])
+            return js[i]['balance']
 
 
-balance(cookies())
+print(get_balance(cookies(), 'USDC'))
