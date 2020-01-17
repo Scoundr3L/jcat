@@ -1,7 +1,7 @@
 import requests
 
 
-def cookies():
+def get_cookies():
     auth = {
         "login": "nkostin@bytewerk.com",
         "password": "Ytuflzq123",
@@ -12,7 +12,8 @@ def cookies():
 
     return r.cookies
 
-
+# TODO cookies можно брать из юзера, не передавая в функцию
+# TODO currency_name передавать пару
 def get_balance(cookies, currency_name):
     params = {
         'page': '1',
@@ -23,11 +24,21 @@ def get_balance(cookies, currency_name):
     js = r.json()
     print(js)
     # print(js[12]['name'])
-    print(len(js))
-    for i in range(1, len(js)):
+    for i in range(len(js)):
         if currency_name in js[i]['name']:
-            print(js[i]['balance'])
             return js[i]['balance']
 
 
-print(get_balance(cookies(), 'USDC'))
+currency_to = 'USDC'
+currency_from = 'LTC'
+c = get_cookies()
+
+currency_to_balance = get_balance(c, currency_to)
+print('fiat balance = ', currency_to_balance)
+
+currency_from_balance = get_balance(c, currency_from)
+print('crypto balance = ', currency_from_balance)
+
+def create_order(cookies):
+
+    pass
