@@ -1,4 +1,5 @@
 import requests
+import User
 
 
 def get_cookies():
@@ -11,6 +12,7 @@ def get_cookies():
     r = requests.post('https://beta.jetcrypto.com/api/User/login', json=auth)
 
     return r.cookies
+
 
 # TODO cookies можно брать из юзера, не передавая в функцию
 # TODO currency_name передавать пару
@@ -29,6 +31,7 @@ def get_balance(cookies, currency_name):
             return js[i]['balance']
 
 
+user1 = User
 currency_to = 'USDC'
 currency_from = 'LTC'
 c = get_cookies()
@@ -39,6 +42,6 @@ print('fiat balance = ', currency_to_balance)
 currency_from_balance = get_balance(c, currency_from)
 print('crypto balance = ', currency_from_balance)
 
-def create_order(cookies):
 
+def create_order(cookies):
     pass
