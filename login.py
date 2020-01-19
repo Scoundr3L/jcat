@@ -10,7 +10,6 @@ def get_cookies():
     }
 
     r = requests.post('https://beta.jetcrypto.com/api/User/login', json=auth)
-
     return r.cookies
 
 
@@ -21,7 +20,6 @@ def get_balance(cookies, currency_name):
         'page': '1',
         'itemsPerPage': '100'
     }
-
     r = requests.get('https://beta.jetcrypto.com/api/UserAccount', params=params, cookies=cookies)
     js = r.json()
     print(js)
@@ -31,7 +29,6 @@ def get_balance(cookies, currency_name):
             return js[i]['balance']
 
 
-user1 = User
 currency_to = 'USDC'
 currency_from = 'LTC'
 c = get_cookies()
