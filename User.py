@@ -1,4 +1,5 @@
 import requests
+from Api import *
 
 
 class User:
@@ -12,12 +13,7 @@ class User:
         self.password = password
 
     def get_cookies(self):
-        auth = {
-            "login": self.login,
-            "password": self.password,
-            "recaptcha": "string"
-        }
+        return Api.login().cookies
 
-        r = requests.post('https://beta.jetcrypto.com/api/User/login', json=auth)
-
-        return r.cookies
+    def get_balance(self):
+        pass

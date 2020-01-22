@@ -15,14 +15,14 @@ def get_balance(cookies, currency_name):
             return js[i]['balance']
 
 
-c = User('nkostin@bytewerk.com', 'Ytuflzq123')
+c = User('nkostin@bytewerk.com', 'ytuflzq123')
 currency_to = 'USDC'
 currency_from = 'LTC'
 
 currency_to_balance = get_balance(c.get_cookies(), currency_to)
 print('fiat balance = ', currency_to_balance)
 
-currency_from_balance = get_balance(d.get_cookies(), currency_from)
+currency_from_balance = get_balance(c.get_cookies(), currency_from)
 print('crypto balance = ', currency_from_balance)
 
 
