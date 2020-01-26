@@ -6,7 +6,7 @@ class Api:
     params = dict(page='1', itemsPerPage='100')
 
     @staticmethod
-    def login(login='nkostin@bytewerk.com', password='ytuflzq123'):
+    def login(login, password):
         auth = {
             "login": login,
             "password": password,
@@ -14,7 +14,12 @@ class Api:
         }
         return requests.post(Api.BASE_URL + '/api/User/login', json=auth)
 
-    def user_account(self, currency_name, cookies):
+    @staticmethod
+    def ping():
+        return requests.get(Api.BASE_URL + '/api/Ping')
+
+    @staticmethod
+    def user_account(currency_name, cookies):
         r = requests.get(Api.BASE_URL + '/api/UserAccount', params=Api.params, cookies=cookies)
         js = r.json()
         print(js)
