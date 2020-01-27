@@ -10,5 +10,4 @@ def test_ping():
 def test_login():
     user1 = User()
     r = user1.login()
-    print(r)
-    assert r.status_code == 200
+    assert r.json()['id'] != 0
