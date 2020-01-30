@@ -3,11 +3,10 @@ from Api import Api
 
 
 def test_ping():
-    r = Api.ping()
-    assert r.status_code == 200
+    ping = Api.ping()
+    assert ping.status_code == 200
 
 
 def test_login():
-    user1 = User()
-    r = user1.login()
-    assert r.json()['id'] != 0
+    user_data = User().login()
+    assert user_data.json()['id'] != 0
