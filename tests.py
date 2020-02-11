@@ -10,3 +10,9 @@ def test_ping():
 def test_login():
     user_data = User().login()
     assert user_data.json()['id'] != 0
+
+
+def test_balance():
+    #balance = User().get_balance('USDC')
+    balance = User().get_balance('USDC')
+    print(balance)
