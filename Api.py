@@ -12,7 +12,8 @@ class Api:
             "password": password,
             "recaptcha": "string"
         }
-        return requests.post(Api.BASE_URL + '/api/User/login', json=auth)
+        rez = requests.post(Api.BASE_URL + '/api/User/login', json=auth)
+        return rez
 
     @staticmethod
     def ping():
@@ -22,5 +23,5 @@ class Api:
     def user_account(cookies, params=PARAMS):
         r = requests.get(Api.BASE_URL + '/api/UserAccount', params=params, cookies=cookies)
         js = r.json()
-        print(js)
+        # print(js)
         return js

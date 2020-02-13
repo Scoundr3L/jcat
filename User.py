@@ -10,14 +10,15 @@ class User:
     def __init__(self, name='nkostin@bytewerk.com', password='ytuflzq123'):
         self.name = name
         self.password = password
-        self.cookies = Api.login(self.name, self.password).cookies
+        self.user_info = Api.login(self.name, self.password)
+        self.cookies = self.user_info.cookies
         # print(self.cookies)
 
     def login(self):
-        return Api.login(self.name, self.password)
+        return self.user_info
 
     def get_cookies(self):
-        result = Api.login(self.name, self.password).cookies
+        result = self.user_info.cookies
         return result
 
     def get_balance(self, currency_name):

@@ -7,12 +7,16 @@ def test_ping():
     assert ping.status_code == 200
 
 
-def test_login():
-    user_data = User().login()
-    assert user_data.json()['id'] != 0
+def test_login(a_user):
+    U = a_user
+    user_id = U.login().json()['id']
+    assert user_id != 0
 
 
-def test_balance():
-    #balance = User().get_balance('USDC')
-    balance = User().get_balance('USDC')
+def test_balance(a_user):
+    # balance = User().get_balance('USDC')
+    U = a_user
+    balance = U.get_balance('USDC')
+    balance2 = U.get_balance('LTC')
     print(balance)
+    print(balance2)
