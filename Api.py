@@ -12,8 +12,8 @@ class Api:
             "password": password,
             "recaptcha": "string"
         }
-        rez = requests.post(Api.BASE_URL + '/api/User/login', json=auth)
-        return rez
+        request = requests.post(Api.BASE_URL + '/api/User/login', json=auth)
+        return request
 
     @staticmethod
     def ping():
@@ -21,7 +21,12 @@ class Api:
 
     @staticmethod
     def user_account(cookies, params=PARAMS):
-        r = requests.get(Api.BASE_URL + '/api/UserAccount', params=params, cookies=cookies)
-        js = r.json()
+        request = requests.get(Api.BASE_URL + '/api/UserAccount', params=params, cookies=cookies)
+        js = request.json()
         # print(js)
         return js
+
+    @staticmethod
+    def market_orders(currency_from, currency_to):
+        request = requests.get(Api.BASE_URL + '/api/Trading/MarketOrders?tradingPair=' + currency_from + ',' + currency_to)
+        print(request.json())
