@@ -29,4 +29,11 @@ class Api:
     @staticmethod
     def market_orders(currency_from, currency_to):
         request = requests.get(Api.BASE_URL + '/api/Trading/MarketOrders?tradingPair=' + currency_from + ',' + currency_to)
-        print(request.json())
+        result = request.json()
+        print('market_orders ', result)
+        return result
+
+    @staticmethod
+    def trading_info():
+        request = requests.get(Api.BASE_URL + '/api/Trading/info')
+        return request.json()
